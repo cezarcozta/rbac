@@ -37,16 +37,13 @@
 `git clone https://github.com/cezarcozta/rbac.git`  
 
 - access the repository folder  
-`cd api-mind`  
+`cd rbac`  
 
 - install all dependencies  
 `yarn`  
 
 - run all migrations  
-`yarn knex:migrate:latest`  
-
-- run the seeds data  
-`yarn knex:seeds`  
+`yarn typeorm:migration:run`  
 
 - run the server  
 `yarn start`  
