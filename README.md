@@ -43,7 +43,7 @@
 `yarn`  
 
 - run all migrations  
-`yarn typeorm:migration:run`  
+`yarn typeorm migration:run`  
 
 - run the server  
 `yarn start`  
