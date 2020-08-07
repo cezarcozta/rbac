@@ -11,7 +11,7 @@ class SessionController {
 
     const userRepository = getCustomRepository(UserRepository);
 
-    const user = await userRepository.findOne({email});
+    const user = await userRepository.findOne({email}, {relations: ['roles']});
 
     if(!user) {
       return response.status(400).json({error: "User not found"});
@@ -23,7 +23,9 @@ class SessionController {
       return response.status(400).json({error: "Credentials combination do not match."});
     }
 
-    const token = sign({}, '37569d11b5828848e522c6e47fc0e72a', {
+    const roles = user.roles.map(role => role.level);
+    
+    const token = sign({ roles }, '37569d11b5828848e522c6e47fc0e72a', {
         subject: user.id, 
         expiresIn: '1d',
     });
