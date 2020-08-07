@@ -17,6 +17,9 @@ class Role {
   id: string;
 
   @Column()
+  level: number;
+
+  @Column()
   name: string;
 
   @Column()

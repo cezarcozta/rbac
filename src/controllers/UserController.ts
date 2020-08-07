@@ -37,7 +37,7 @@ class UserController {
       name, 
       cpf, 
       email,
-      profile_image: imageFilePath,
+      profile_image: image,
       password: passwordHashed,
       roles: existsRoles,
     });

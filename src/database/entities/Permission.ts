@@ -1,13 +1,16 @@
-import {PrimaryGeneratedColumn, Entity, Column, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {
+  PrimaryGeneratedColumn, 
+  Entity, 
+  Column, 
+  CreateDateColumn, 
+  UpdateDateColumn
+} from 'typeorm';
 
 @Entity('permissions')
 class Permission {
 
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  level: number;
 
   @Column()
   name: string;

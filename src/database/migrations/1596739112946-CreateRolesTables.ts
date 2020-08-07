@@ -15,6 +15,10 @@ export class CreateRolesTables1596739112946 implements MigrationInterface {
                         default: 'uuid_generated_v4()',
                     },
                     {
+                        name: 'level',
+                        type: 'integer',
+                    },
+                    {
                         name: 'name',
                         type: 'varchar',
                     },

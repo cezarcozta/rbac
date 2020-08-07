@@ -8,7 +8,7 @@ class RoleController {
     const roleRepository = getCustomRepository(RoleRepository);
     const permissionRepository = getCustomRepository(PermissionRepository);
 
-    const { name, description, permissions } = request.body;
+    const { level, name, description, permissions } = request.body;
 
     const existsRole = await roleRepository.findOne({name});
 
@@ -19,6 +19,7 @@ class RoleController {
     const existsPermissions = await permissionRepository.findByIds(permissions)
 
     const role = roleRepository.create({
+      level,
       name, 
       description,
       permissions: existsPermissions,

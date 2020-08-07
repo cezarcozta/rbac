@@ -15,10 +15,6 @@ export default class CreatePermissionsTable1596738923918 implements MigrationInt
                         default: 'uuid_generated_v4()',
                     },
                     {
-                        name: 'level',
-                        type: 'integer',
-                    },
-                    {
                         name: 'name',
                         type: 'varchar',
                     },

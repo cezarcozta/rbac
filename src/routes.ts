@@ -26,10 +26,10 @@ router.get('/users/:id', userController.show);
 router.put('/users/:id', is(['ROLE_ADMIN', 'ROLE_ORDINARY'])); //Falta controller
 router.patch('/users/:id',is(['ROLE_ADMIN'])); //falta controller
 
-router.post('/permissions', is(['ROLE_ADMIN']), permissionController.create);
+router.post('/permissions', permissionController.create);
 router.get('/permissions', is(['ROLE_ADMIN']), permissionController.index);
 
-router.post('/roles', is(['ROLE_ADMIN']), roleController.create);
+router.post('/roles', roleController.create);
 router.get('/roles', is(['ROLE_ADMIN']), roleController.index);
 
 export default router;
