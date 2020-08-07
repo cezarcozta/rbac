@@ -10,13 +10,17 @@
 
 - Database:  
   - SQLite  
-  - Knex  
-    - transactions  
+  - TypeORM
     - migrations  
-    - seeds  
+    - relations  
 
 - Dependecies:  
   - Production:  
+    - bcryptjs  
+    - jsonwebtoken  
+    - reflect-metadata  
+    - sqlite3  
+    - typeorm  
     - express  
   - Development:  
     - Typescript  
@@ -30,7 +34,7 @@
 > - npm  
 
 - clone this repository  
-`git clone https://github.com/cezarcozta/api-mind.git`  
+`git clone https://github.com/cezarcozta/rbac.git`  
 
 - access the repository folder  
 `cd api-mind`  
