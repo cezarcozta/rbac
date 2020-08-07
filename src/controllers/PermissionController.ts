@@ -6,7 +6,7 @@ class PermissionController {
   async create(request: Request, response :Response) {
     const permissionRepository = getCustomRepository(PermissionRepository);
 
-    const { name, description } = request.body;
+    const { level, name, description } = request.body;
 
     const existsPermission = await permissionRepository.findOne({name});
 
@@ -15,7 +15,7 @@ class PermissionController {
     }
 
     const permission = permissionRepository.create({
-      name, description,
+      level, name, description,
     });
 
     await permissionRepository.save(permission);

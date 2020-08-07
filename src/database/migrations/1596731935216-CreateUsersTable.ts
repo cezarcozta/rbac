@@ -7,35 +7,45 @@ export default class CreateUsersTable1596731935216 implements MigrationInterface
             new Table({
                 name: 'users',
                 columns: [
-                    {
-                        name: 'id',
-                        type: 'uuid',
-                        isPrimary: true,
-                        generationStrategy: 'uuid',
-                        default: 'uuid_generated_v4()',
-                    },
-                    {
-                        name: 'name',
-                        type: 'varchar',
-                    },
-                    {
-                        name: 'username',
-                        type: 'varchar',
-                    },
-                    {
-                        name: 'password',
-                        type: 'varchar',
-                    },
-                    {
-                        name: 'created_at',
-                        type: 'timestamp',
-                        default: 'now()'
-                    },
-                    {
-                        name: 'updated_at',
-                        type: 'timestamp',
-                        default: 'now()'
-                    }
+                  {
+                    name: 'id',
+                    type: 'uuid',
+                    isPrimary: true,
+                    generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()',
+                  },
+                  {
+                    name: 'name',
+                    type: 'varchar',
+                  },
+                  {
+                    name: 'email',
+                    type: 'varchar',
+                    isUnique: true,
+                  },
+                  {
+                    name: 'cpf',
+                    type: 'varchar',
+                    isUnique: true,
+                  },
+                  {
+                    name: 'profile_image',
+                    type: 'varchar',
+                  },
+                  {
+                    name: 'password',
+                    type: 'varchar',
+                  },
+                  {
+                    name: 'created_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                  },
+                  {
+                    name: 'updated_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                  },
                 ],
             }),
         );

@@ -1,4 +1,15 @@
-import {PrimaryGeneratedColumn, Entity, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTable} from 'typeorm';
+import {
+  PrimaryGeneratedColumn, 
+  Entity, 
+  Column, 
+  CreateDateColumn, 
+  UpdateDateColumn, 
+  ManyToMany, 
+  JoinTable
+} from 'typeorm';
+
+import { Expose, Exclude } from 'class-transformer';
+
 import Role from './Role';
 
 @Entity('users')
@@ -11,9 +22,16 @@ class User {
   name: string;
 
   @Column()
-  username: string;
+  cpf: string;
 
   @Column()
+  email: string;
+
+  @Column()
+  profile_image: string;
+
+  @Column()
+  @Exclude()
   password: string;
 
   @CreateDateColumn()
@@ -29,6 +47,15 @@ class User {
     inverseJoinColumns: [{name: 'role_id'}]
   })
   roles: Role[];
+
+  @Expose({ name: 'profile_img_url' })
+  getImageUrl(): string | null {
+    if (!this.profile_image) {
+      return null;
+    }
+
+    return `${process.env.APP_API_URL}/files/${this.profile_image}`;
+  }
 }
 
 export default User;
