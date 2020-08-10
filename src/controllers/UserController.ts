@@ -91,7 +91,7 @@ class UserController {
 
     delete updatedUser.password;
 
-    return response.status(201).json(updatedUser)
+    return response.status(201).json(classToClass(updatedUser))
   }
 
   // async changeRoles(request: Request, response: Response) {

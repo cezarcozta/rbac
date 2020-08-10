@@ -4,6 +4,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import UserRepository from '../repositories/UserRepository';
+import { classToClass } from 'class-transformer';
 
 class SessionController {
   async create(request: Request, response :Response) {
@@ -11,7 +12,7 @@ class SessionController {
 
     const userRepository = getCustomRepository(UserRepository);
 
-    const user = await userRepository.findOne({email}, {relations: ['roles']});
+    let user = await userRepository.findOne({email}, {relations: ['roles']});
 
     if(!user) {
       return response.status(400).json({error: "User not found"});
@@ -30,12 +31,9 @@ class SessionController {
         expiresIn: '1d',
     });
 
-    delete user.password;
+    user = classToClass(user);
 
-    return response.json({
-      user,
-      token
-    });
+    return response.json({user, token});
   }
 }
 

@@ -21,15 +21,15 @@ const roleController = new RoleController();
 router.post('/sessions', sessionController.create);
 
 router.post('/users', upload.single('image'), userController.create);
-router.get('/users', is(['ROLE_ADMIN']), userController.index);
+router.get('/users', userController.index);
 router.get('/users/:id', userController.show);
-router.put('/users/:id', is(['ROLE_ADMIN', 'ROLE_ORDINARY'])); //Falta controller
+router.put('/users/:id', is(['ROLE_ADMIN', 'ROLE_ORDINARY']), userController.update); //Falta controller
 router.patch('/users/:id',is(['ROLE_ADMIN'])); //falta controller
 
-router.post('/permissions', permissionController.create);
-router.get('/permissions', is(['ROLE_ADMIN']), permissionController.index);
+router.post('/permissions', is(['ROLE_ADMIN']), permissionController.create);
+router.get('/permissions',  permissionController.index);
 
-router.post('/roles', roleController.create);
-router.get('/roles', is(['ROLE_ADMIN']), roleController.index);
+router.post('/roles', is(['ROLE_ADMIN']), roleController.create);
+router.get('/roles', roleController.index);
 
 export default router;
